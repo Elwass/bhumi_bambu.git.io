@@ -1,57 +1,43 @@
 <?php
 
-use App\Http\Controllers\LandingPageController;
-// use App\Http\Controllers\PromoController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\PublicPackageController;
+use App\Http\Controllers\SlotController;
+use Illuminate\Support\Facades\Route;
 
+Route::get('/', [PublicPackageController::class, 'landing'])->name('landing');
+Route::get('/packages', [PublicPackageController::class, 'index'])->name('packages.public.index');
+Route::get('/packages/{package:slug}', [PublicPackageController::class, 'show'])->name('packages.public.show');
 
-// Route::get('/', [LandingPageController::class, 'index']);
+Route::middleware('auth')->group(function () {
+    Route::get('/bookings', [BookingController::class, 'index'])->name('bookings.index');
+    Route::get('/packages/{package:slug}/book', [BookingController::class, 'create'])->name('bookings.create');
+    Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+    Route::get('/bookings/{booking}', [BookingController::class, 'show'])->name('bookings.show');
 
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
-/*
-| Public
-*/
-
-/*
-| Public
-*/
-
-Route::get('/', function () {
-    return view('welcome');
+    Route::get('/bookings/{booking}/payment', [PaymentController::class, 'create'])->name('payments.create');
+    Route::post('/bookings/{booking}/payment', [PaymentController::class, 'store'])->name('payments.store');
 });
 
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
+    Route::get('/dashboard', AdminDashboardController::class)->name('dashboard');
 
-/*
-/ Admin Promo CRUD
-/
-*/
+    Route::resource('packages', PackageController::class)->except(['show']);
 
-Route::middleware(['auth'])->group(function () {
+    Route::get('packages/{package}/slots', [SlotController::class, 'index'])->name('packages.slots.index');
+    Route::get('packages/{package}/slots/create', [SlotController::class, 'create'])->name('packages.slots.create');
+    Route::post('packages/{package}/slots', [SlotController::class, 'store'])->name('packages.slots.store');
+    Route::get('packages/{package}/slots/{slot}/edit', [SlotController::class, 'edit'])->name('packages.slots.edit');
+    Route::put('packages/{package}/slots/{slot}', [SlotController::class, 'update'])->name('packages.slots.update');
+    Route::delete('packages/{package}/slots/{slot}', [SlotController::class, 'destroy'])->name('packages.slots.destroy');
 
-    // READ - List promo
-    Route::get('/admin/promo', [PromoController::class, 'index'])->name('promo.index');
+    Route::get('bookings', [BookingController::class, 'adminIndex'])->name('bookings.index');
+    Route::post('bookings/{booking}/status', [BookingController::class, 'updateStatus'])->name('bookings.status');
 
-    // CREATE - Form tambah promo
-    Route::get('/admin/promo/create', [PromoController::class, 'create'])->name('promo.create');
-    // CREATE - Simpan promo
-    Route::post('/admin/promo', [PromoController::class, 'store'])->name('promo.store');
-
-    // EDIT - Form edit promo
-    Route::get('/admin/promo/{id}/edit', [PromoController::class, 'edit'])->name('promo.edit');
-    // UPDATE - Simpan perubahan promo
-    Route::put('/admin/promo/{id}', [PromoController::class, 'update'])->name('promo.update');
-
-    // DELETE - Hapus promo
-    Route::delete('/admin/promo/{id}', [PromoController::class, 'destroy'])->name('promo.destroy');
+    Route::post('payments/{payment}/verify', [PaymentController::class, 'verify'])->name('payments.verify');
 });
 
-
-/*
-/ User Apply Promo
-/
-*/
-
-Route::post('/apply-promo', [PemesananController::class, 'applyPromo'])->name('apply.promo');
+require __DIR__ . '/auth.php';

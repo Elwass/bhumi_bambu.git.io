@@ -9,3 +9,34 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+:root {
+    --bb-forest: #1f3d32;
+    --bb-forest-2: #1a332a;
+    --bb-forest-3: #152922;
+    --bb-forest-4: #0f1f19;
+}
+
+body {
+    background-color: var(--bb-forest-4);
+    color: #f5f5f5;
+}
+
+.bb-btn {
+    background-color: var(--bb-forest);
+    color: #f5f5f5;
+}
+
+.bb-btn:hover {
+    background-color: var(--bb-forest-2);
+}
+
+.bb-card {
+    background: linear-gradient(160deg, var(--bb-forest-2), var(--bb-forest-3));
+    border: 1px solid var(--bb-forest);
+}
+
+.bb-tag {
+    background-color: var(--bb-forest);
+    color: #d1fae5;
+}
