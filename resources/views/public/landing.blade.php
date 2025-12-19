@@ -19,23 +19,44 @@
     </div>
 </section>
 
-<section id="highlighted" class="max-w-7xl mx-auto mt-10">
-    <div class="flex items-baseline justify-between mb-4 px-1">
-        <h2 class="text-2xl font-semibold">Paket Unggulan</h2>
-        <a href="{{ route('packages.public.index') }}" class="text-sm underline">Semua Paket</a>
-    </div>
-    <div class="grid md:grid-cols-3 gap-4">
-        @foreach($packages as $package)
-            <div class="bb-card p-4 rounded shadow-md shadow-black/20">
-                <h3 class="text-xl font-semibold mb-2">{{ $package->title }}</h3>
-                <p class="text-sm text-gray-200 mb-3 line-clamp-3">{{ Str::limit($package->description, 110) }}</p>
-                <div class="flex justify-between items-center text-sm mb-3">
-                    <span class="bb-tag px-2 py-1 rounded">{{ ucfirst(str_replace('_', ' ', $package->category)) }}</span>
-                    <span class="font-semibold">Rp {{ number_format($package->price, 0, ',', '.') }}</span>
+<section id="highlighted" class="bg-[#0f1f19] bg-opacity-95 border-t border-[#1f3d32] mt-14">
+    <div class="max-w-7xl mx-auto px-4 py-10">
+        <div class="flex items-baseline justify-between mb-6 px-1">
+            <h2 class="text-2xl font-semibold">Paket Unggulan</h2>
+            <a href="{{ route('packages.public.index') }}" class="text-sm underline">Semua Paket</a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4">
+            @forelse($packages as $package)
+                <div class="bb-card p-4 rounded shadow-md shadow-black/20">
+                    <h3 class="text-xl font-semibold mb-2">{{ $package->title }}</h3>
+                    <p class="text-sm text-gray-200 mb-3 line-clamp-3">{{ Str::limit($package->description, 110) }}</p>
+                    <div class="flex justify-between items-center text-sm mb-3">
+                        <span class="bb-tag px-2 py-1 rounded">{{ ucfirst(str_replace('_', ' ', $package->category)) }}</span>
+                        <span class="font-semibold">Rp {{ number_format($package->price, 0, ',', '.') }}</span>
+                    </div>
+                    <a href="{{ route('packages.public.show', $package) }}" class="bb-btn px-3 py-2 rounded inline-block text-center w-full">Lihat Paket</a>
                 </div>
-                <a href="{{ route('packages.public.show', $package) }}" class="bb-btn px-3 py-2 rounded inline-block text-center w-full">Lihat Paket</a>
-            </div>
-        @endforeach
+            @empty
+                @php
+                    $placeholderPackages = [
+                        ['title' => 'Gathering Bamboo Lounge', 'description' => 'Venue semi-outdoor berpadu bambu alami untuk acara privat hingga 50 pax.', 'price' => 500000, 'category' => 'event'],
+                        ['title' => 'Edukasi Bambu & Workshop', 'description' => 'Sesi belajar bambu, demo kerajinan, dan tur kebun bambu.', 'price' => 250000, 'category' => 'bamboo_education'],
+                        ['title' => 'Sunrise Camping Ridge', 'description' => 'Camping spot dengan view matahari terbit dan api unggun malam hari.', 'price' => 300000, 'category' => 'camping'],
+                    ];
+                @endphp
+                @foreach($placeholderPackages as $sample)
+                    <div class="bb-card p-4 rounded shadow-md shadow-black/20">
+                        <h3 class="text-xl font-semibold mb-2">{{ $sample['title'] }}</h3>
+                        <p class="text-sm text-gray-200 mb-3 line-clamp-3">{{ $sample['description'] }}</p>
+                        <div class="flex justify-between items-center text-sm mb-3">
+                            <span class="bb-tag px-2 py-1 rounded">{{ ucfirst(str_replace('_', ' ', $sample['category'])) }}</span>
+                            <span class="font-semibold">Rp {{ number_format($sample['price'], 0, ',', '.') }}</span>
+                        </div>
+                        <a href="{{ route('packages.public.index') }}" class="bb-btn px-3 py-2 rounded inline-block text-center w-full">Lihat Paket</a>
+                    </div>
+                @endforeach
+            @endforelse
+        </div>
     </div>
 </section>
 @endsection
