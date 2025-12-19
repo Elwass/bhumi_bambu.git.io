@@ -6,13 +6,19 @@
     <title>Bhumi Bambu Baturaden</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen">
+<body class="min-h-screen @yield('body_class')">
 <div class="min-h-screen flex flex-col">
-    <nav class="bg-[#0f1f19] border-b border-[#1f3d32]">
+    <nav class="main-nav bg-[#0f1f19] border-b border-[#1f3d32] @yield('nav_class')">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="{{ route('landing') }}" class="text-xl font-semibold">Bhumi Bambu</a>
+            <a href="{{ route('landing') }}" class="flex items-center gap-3 text-xl font-semibold">
+                <img src="{{ asset('images/bhumi-logo.svg') }}" alt="Bhumi Bambu" class="h-10 w-10">
+                <span>Bhumi Bambu</span>
+            </a>
             <div class="flex gap-4 items-center text-sm">
-                <a href="{{ route('packages.public.index') }}" class="hover:underline">Paket</a>
+                <a href="{{ route('landing') }}" class="hover:underline">Beranda</a>
+                <a href="#highlighted" class="hover:underline">Layanan</a>
+                <a href="#about" class="hover:underline">Tentang</a>
+                <a href="#help" class="hover:underline">Bantuan</a>
                 @auth
                     <a href="{{ route('bookings.index') }}" class="hover:underline">Booking Saya</a>
                     @if(auth()->user()->role === 'admin')
@@ -20,11 +26,11 @@
                     @endif
                     <form method="POST" action="{{ route('logout') }}" class="inline">
                         @csrf
-                        <button type="submit" class="hover:underline">Keluar</button>
+                        <button type="submit" class="hover:underline cta-link">Keluar</button>
                     </form>
                 @else
-                    <a href="{{ route('login') }}" class="hover:underline">Masuk</a>
-                    <a href="{{ route('register') }}" class="hover:underline">Daftar</a>
+                    <a href="{{ route('login') }}" class="cta-link">Masuk</a>
+                    <a href="{{ route('register') }}" class="cta-link">Daftar</a>
                 @endauth
             </div>
         </div>
