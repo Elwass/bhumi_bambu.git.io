@@ -19,6 +19,38 @@
     </div>
 </section>
 
+<section id="services" class="section bg-[#0f1f19] bg-opacity-95 border-t border-[#1f3d32]">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="section-title">Layanan Bhumi Bambu</h2>
+        <p class="section-subtitle">Pilihan layanan lengkap untuk pengalaman alam, gathering, dan edukasi.</p>
+        <div class="card-grid card-grid-3">
+            @foreach($services as $service)
+                <div class="service-card">
+                    <div class="service-icon mb-3">{{ $service['icon'] }}</div>
+                    <h3 class="font-semibold text-lg mb-2">{{ $service['title'] }}</h3>
+                    <p class="text-sm text-gray-200">{{ $service['desc'] }}</p>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<section id="venues" class="section bg-[#0f1f19] bg-opacity-95 border-t border-[#1f3d32]">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="section-title">Venue</h2>
+        <p class="section-subtitle">Pilih venue sesuai kebutuhan acara Anda.</p>
+        <div class="card-grid card-grid-3">
+            @foreach($venues as $venue)
+                <div class="venue-card">
+                    <h3 class="font-semibold text-lg mb-2">{{ $venue['title'] }}</h3>
+                    <p class="text-sm text-gray-200 mb-2">{{ $venue['desc'] }}</p>
+                    <p class="text-xs text-gray-300">Fitur: {{ $venue['features'] }}</p>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
 <section id="highlighted" class="bg-[#0f1f19] bg-opacity-95 border-t border-[#1f3d32] mt-14">
     <div class="max-w-7xl mx-auto px-4 py-10">
         <div class="flex items-baseline justify-between mb-6 px-1">
@@ -55,6 +87,32 @@
                         <a href="{{ route('packages.public.index') }}" class="bb-btn px-3 py-2 rounded inline-block text-center w-full">Lihat Paket</a>
                     </div>
                 @endforeach
+            @endforelse
+        </div>
+    </div>
+</section>
+
+<section id="reviews" class="section bg-[#0f1f19] bg-opacity-95 border-t border-[#1f3d32]">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="section-title">Review Pengunjung</h2>
+        <p class="section-subtitle">Testimoni asli yang tersimpan di sistem.</p>
+        <div class="card-grid card-grid-3">
+            @forelse($reviews as $review)
+                <div class="review-card">
+                    <div class="flex items-center justify-between mb-2">
+                        <h3 class="font-semibold">{{ $review->name }}</h3>
+                        <span class="rating">{{ str_repeat('★', $review->rating) }}</span>
+                    </div>
+                    @if($review->role)
+                        <p class="text-xs text-gray-300 mb-2">{{ $review->role }}</p>
+                    @endif
+                    <p class="text-sm text-gray-200">{{ $review->message }}</p>
+                </div>
+            @empty
+                <div class="review-card">
+                    <h3 class="font-semibold">Belum ada review</h3>
+                    <p class="text-sm text-gray-200">Jadilah yang pertama memberikan kesan setelah melakukan reservasi.</p>
+                </div>
             @endforelse
         </div>
     </div>
