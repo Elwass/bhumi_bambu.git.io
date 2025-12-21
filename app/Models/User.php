@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -18,17 +19,24 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'nama_user',
+        'name',
         'email',
         'password',
         'role',
-        'no_hp',
-        'alamat',
+        'phone',
+        'address',
     ];
-    public function pelanggan()
+
+    public function bookings(): HasMany
     {
-        return $this->hasOne(Pelanggan::class, 'id_user');
+        return $this->hasMany(Booking::class);
     }
+
+    public function payments(): HasManyThrough
+    {
+        return $this->hasManyThrough(Payment::class, Booking::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

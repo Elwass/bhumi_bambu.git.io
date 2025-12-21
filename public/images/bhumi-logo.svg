@@ -1,0 +1,21 @@
+<svg width="320" height="220" viewBox="0 0 320 220" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bhumi Bambu Baturaden">
+  <defs>
+    <style>
+      .gold-fill { fill: #c78b2f; }
+      .gold-stroke { stroke: #c78b2f; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; }
+      .text { font-family: 'Poppins', 'Arial Black', sans-serif; font-weight: 800; letter-spacing: 0.5px; }
+    </style>
+  </defs>
+  <path class="gold-stroke" d="M72 40c0 90 22 125 80 150"/>
+  <path class="gold-stroke" d="M98 70c0 45 22 80 56 102"/>
+  <path class="gold-stroke" d="M70 40c70-30 160 12 160 90 0 78-68 123-140 100C40 214 18 172 18 122 18 80 40 50 70 40Z"/>
+  <path class="gold-stroke" d="M132 96c16-6 26-14 32-24"/>
+  <path class="gold-stroke" d="M134 124c14-4 24-10 30-18"/>
+  <path class="gold-stroke" d="M125 160c18-8 26-16 32-30"/>
+  <path class="gold-stroke" d="M32 164c54 40 164 42 242 4"/>
+  <g class="gold-fill text" font-size="30">
+    <text x="205" y="100" text-anchor="middle">BHUMI</text>
+    <text x="205" y="135" text-anchor="middle">BAMBU</text>
+  </g>
+  <text class="gold-fill text" x="205" y="160" text-anchor="middle" font-size="16" letter-spacing="2">BATURRADEN</text>
+</svg>
