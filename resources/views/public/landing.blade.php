@@ -5,17 +5,12 @@
 
 @section('content')
 @php use Illuminate\Support\Str; @endphp
-<section class="hero" style="background-image: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=2000&q=80');">
+<section class="hero" style="background-image: url('{{ asset('assets/hero.jpg') }}');">
     <div class="hero-content">
-        <div class="hero-card">
-            <div class="flex justify-start mb-6">
-                <img src="{{ asset('aset/logo.png') }}" alt="Bhumi Bambu" class="h-16">
-            </div>
-            <p class="uppercase tracking-wide text-sm text-gray-200 mb-2 font-semibold">Wujudkan Momen</p>
-            <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-3">Tak Terlupakan di Bhumi Bambu Baturaden</h1>
-            <p class="hero-tagline mb-5">Destinasi elegan untuk perayaan istimewa Anda, berpadu harmonis dengan keindahan alam.</p>
-            <a href="{{ route('packages.public.index') }}" class="bb-btn px-6 py-3 rounded-full text-base inline-block">Reservasi Venue Sekarang</a>
-        </div>
+        <p class="uppercase tracking-wide text-sm text-gray-200 mb-2 font-semibold">Wujudkan Momen</p>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-3">Tak Terlupakan di Bhumi Bambu Baturaden</h1>
+        <p class="hero-tagline mb-5">Destinasi elegan untuk perayaan istimewa Anda, berpadu harmonis dengan keindahan alam.</p>
+        <a href="{{ route('packages.public.index') }}" class="bb-btn px-6 py-3 rounded-full text-base inline-block">Reservasi Venue Sekarang</a>
     </div>
 </section>
 
