@@ -1,0 +1,29 @@
+<svg width="400" height="260" viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bhumi Bambu Baturaden">
+  <defs>
+    <style>
+      .gold { stroke: #c78b2f; stroke-width: 7; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+      .gold-fill { fill: #c78b2f; }
+      .text { font-family: 'Poppins', 'Arial Black', sans-serif; font-weight: 800; letter-spacing: 0.5px; }
+    </style>
+  </defs>
+  <!-- Lingkar bambu -->
+  <path class="gold" d="M60 60c-32 30-30 116 16 150 44 32 120 18 152-28 33-47 18-120-30-150C152 6 82 12 60 60Z"/>
+  <!-- Batang bambu -->
+  <path class="gold" d="M112 64c0 78 18 116 74 152"/>
+  <path class="gold" d="M132 98c0 48 14 90 48 122"/>
+  <!-- Cabang & daun -->
+  <path class="gold" d="M120 132c18-6 30-14 38-26"/>
+  <path class="gold" d="M130 108c16-6 26-14 32-24"/>
+  <path class="gold" d="M112 172c36 16 96 14 150-10"/>
+  <path class="gold" d="M126 78c-10 10-18 16-28 20"/>
+  <path class="gold" d="M140 84c-8 8-14 12-22 14"/>
+  <path class="gold" d="M150 114c-10 10-18 16-28 20"/>
+  <!-- Teks -->
+  <g class="gold-fill text" font-size="34">
+    <text x="260" y="126">BHUMI</text>
+    <text x="260" y="162">BAMBU</text>
+  </g>
+  <text class="gold-fill text" x="260" y="188" font-size="16" letter-spacing="2">BATURRADEN</text>
+  <!-- Gelombang bawah -->
+  <path class="gold" d="M52 186c60 44 166 52 244 10"/>
+</svg>
