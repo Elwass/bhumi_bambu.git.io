@@ -9,7 +9,7 @@
     <div class="hero-content">
         <div class="hero-card">
             <div class="flex justify-start mb-6">
-                <img src="{{ asset('images/bhumi-logo.svg') }}" alt="Bhumi Bambu" class="h-14 drop-shadow-lg">
+                <img src="{{ asset('images/bhumi-logo.svg') }}" alt="Bhumi Bambu" class="h-16">
             </div>
             <p class="uppercase tracking-wide text-sm text-gray-200 mb-2 font-semibold">Wujudkan Momen</p>
             <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-3">Tak Terlupakan di Bhumi Bambu Baturaden</h1>

@@ -11,7 +11,7 @@
     <nav class="main-nav bg-[#0f1f19] border-b border-[#1f3d32] @yield('nav_class')">
         <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
             <a href="{{ route('landing') }}" class="flex items-center gap-3 text-xl font-semibold">
-                <img src="{{ asset('images/bhumi-logo.svg') }}" alt="Bhumi Bambu" class="h-10 w-10">
+                <img src="{{ asset('images/bhumi-logo.svg') }}" alt="Bhumi Bambu" class="h-12">
                 <span>Bhumi Bambu</span>
             </a>
             <div class="flex gap-4 items-center text-sm">
